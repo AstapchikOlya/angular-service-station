@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <a class="btn btn-default"
+       role="button"
+       routerLink="/clients">Back to Clients</a>
+    <button
+      class="btn btn-success"
+      (click)="onNewCar()">New Car</button>
+
+    <h2>Client's Cars</h2>
+
+    <hr>
+
+    <div
+      class="alert alert-warning"
+      role="alert"
+      *ngIf="!cars.length">There are no Cars yet.</div>
+
+    <table
+      class="table table-striped"
+      *ngIf="cars.length">
+      <thead>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>VIN</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let carEl of cars; let i = index"
+          app-car-item
+          [car]="carEl"
+          [index]="i">
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<td>{{ order.date }}</td>
+<td>{{ order.orderAmount }}</td>
+<td class="{{ statusClass }}">{{ order.orderStatus }}</td>
+<td>
+  <button
+    class="btn btn-info"
+    aria-label="Edit"
+    (click)="onEditOrder()">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </button>
+</td>
+<td>
+  <button
+    class="btn btn-danger"
+    aria-label="Remove"
+    (click)="onRemoveOrder()">
+    <span class="glyphicon glyphicon-trash"></span>
+  </button>
+</td>

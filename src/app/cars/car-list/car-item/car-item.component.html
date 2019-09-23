@@ -1,0 +1,29 @@
+<td>{{ car.make }}</td>
+<td>{{ car.model }}</td>
+<td>{{ car.year }}</td>
+<td>{{ car.vin }}</td>
+<td>
+  <button
+    class="btn btn-info"
+    aria-label="Edit"
+    (click)="onEditCar()">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </button>
+</td>
+<td>
+  <button
+    class="btn btn-success"
+    aria-label="View Orders"
+    (click)="onViewOrders()">
+    <span class="glyphicon glyphicon-list"></span> Orders
+  </button>
+</td>
+<td>
+  <button
+    class="btn btn-danger"
+    aria-label="Remove"
+    [disabled]="hasOrders"
+    (click)="onRemoveCar()">
+    <span class="glyphicon glyphicon-trash"></span>
+  </button>
+</td>

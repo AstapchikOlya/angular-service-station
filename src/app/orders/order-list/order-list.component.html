@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-default"
+            (click)="onGoBack()">Back to Cars</button>
+    <button class="btn btn-success"
+            (click)="onNewOrder()">New Order</button>
+
+    <h2>Car's Orders</h2>
+
+    <hr>
+
+    <div
+      class="alert alert-warning"
+      role="alert"
+      *ngIf="!orders.length">There are no Orders yet.</div>
+
+    <table
+      class="table table-striped"
+      *ngIf="orders.length">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Order Amount ($)</th>
+        <th>Order Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let orderEl of orders; let i = index"
+          app-order-item
+          [order]="orderEl"
+          [index]="i">
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Search for Client</h2>
+      <form class="form-inline" [formGroup]="searchClientForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input
+            type="text"
+            id="fullname"
+            placeholder="Name Surname"
+            formControlName="fullName"
+            class="form-control">
+          <span *ngIf="!searchClientForm.get('fullName').valid && searchClientForm.get('fullName').touched" class="help-block">
+            <span *ngIf="searchClientForm.get('fullName').errors['required']">Full Name is required</span>
+          </span>
+        </div>
+        <button
+          class="btn btn-info"
+          type="submit"
+          [disabled]="!searchClientForm.valid">Search</button>
+        <button
+          class="btn btn-default"
+          type="button"
+          (click)="onClearSearch()">Clear</button>
+      </form>
+
+      <div *ngIf="hasResult" class="search-result">
+
+        <table
+          class="table table-striped"
+          *ngIf="foundClients.length">
+          <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Date of Birth</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let clientEl of foundClients"
+              app-client-item
+              [client]="clientEl"
+              [index]="getClientIndex(clientEl)">
+          </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="!foundClients.length" class="alert alert-warning" role="alert">No Clients found with such Full Name. Please create new Client.</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

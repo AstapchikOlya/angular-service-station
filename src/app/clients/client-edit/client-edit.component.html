@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h2>{{ pageTitle }}</h2>
+
+      <form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input
+            type="text"
+            id="first-name"
+            formControlName="firstName"
+            class="form-control">
+          <span *ngIf="!newClientForm.get('firstName').valid && newClientForm.get('firstName').touched" class="help-block">
+            <span *ngIf="newClientForm.get('firstName').errors['required']">First Name is required</span>
+            <span *ngIf="newClientForm.get('firstName').errors['pattern']">First Name allows only a-z, A-Z characters</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input
+            type="text"
+            id="last-name"
+            formControlName="lastName"
+            class="form-control">
+          <span *ngIf="!newClientForm.get('lastName').valid && newClientForm.get('lastName').touched" class="help-block">
+            <span *ngIf="newClientForm.get('lastName').errors['required']">Last Name is required</span>
+            <span *ngIf="newClientForm.get('lastName').errors['pattern']">Last Name allows only a-z, A-Z characters</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="birth-date">Date of Birth</label>
+          <input
+            type="text"
+            id="birth-date"
+            formControlName="birthDate"
+            placeholder="mm/dd/yyyy"
+            class="form-control">
+          <span *ngIf="!newClientForm.get('birthDate').valid && newClientForm.get('birthDate').touched" class="help-block">
+            <span *ngIf="newClientForm.get('birthDate').errors['required']">Birth date is required</span>
+            <span *ngIf="newClientForm.get('birthDate').errors['pattern']">Invalid date format. Please provide it in mm/dd/yyyy format</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            id="address"
+            formControlName="address"
+            class="form-control">
+          <span *ngIf="!newClientForm.get('address').valid && newClientForm.get('address').touched" class="help-block">
+            <span *ngIf="newClientForm.get('address').errors['required']">Address is required</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            type="text"
+            id="phone"
+            placeholder="+375 (29) 111 11 11"
+            formControlName="phone"
+            class="form-control">
+          <span *ngIf="!newClientForm.get('phone').valid && newClientForm.get('phone').touched" class="help-block">
+            <span *ngIf="newClientForm.get('phone').errors['required']">Phone is required</span>
+            <span *ngIf="newClientForm.get('phone').errors['pattern']">Phone must match +375 (29) 111 11 11 pattern</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control">
+          <span *ngIf="!newClientForm.get('email').valid && newClientForm.get('email').touched" class="help-block">
+            <span *ngIf="newClientForm.get('email').errors['required']">Email is required</span>
+            <span *ngIf="newClientForm.get('email').errors['email']">Email must be a valid email address</span>
+          </span>
+        </div>
+        <button
+          class="btn btn-default"
+          (click)="onBackToClients()">Cancel</button>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!newClientForm.valid">{{ submitBtnTitle }}</button>
+      </form>
+    </div>
+  </div>
+</div>

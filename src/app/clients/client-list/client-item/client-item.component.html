@@ -1,0 +1,21 @@
+<td>{{ client.firstName + ' ' + client.lastName }}</td>
+<td>{{ client.birthDate }}</td>
+<td>{{ client.address }}</td>
+<td>{{ client.phone }}</td>
+<td>{{ client.email }}</td>
+<td>
+  <button
+    class="btn btn-info"
+    aria-label="Edit"
+    (click)="onEditClient()">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </button>
+</td>
+<td>
+  <button
+    class="btn btn-success"
+    aria-label="View cars"
+    (click)="onViewCars()">
+    <span class="glyphicon glyphicon-list"></span> Cars
+  </button>
+</td>
